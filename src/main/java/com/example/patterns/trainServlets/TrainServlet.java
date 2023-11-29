@@ -1,6 +1,6 @@
-package com.example.patterns1.trainServlets;
+package com.example.patterns.trainServlets;
 
-import com.example.patterns1.data.main.GetTrainsImpl;
+import com.example.patterns.data.main.GetTrainsImpl;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServlet;

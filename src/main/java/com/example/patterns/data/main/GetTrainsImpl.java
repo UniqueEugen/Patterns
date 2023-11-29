@@ -1,14 +1,17 @@
-package com.example.patterns1.data.main;
+package com.example.patterns.data.main;
 
 
-import com.example.patterns1.data.main.animalsXML.Train;
-import com.example.patterns1.data.main.animalsXML.XMLReader;
+import com.example.patterns.data.main.animalsXML.Train;
+import com.example.patterns.data.main.animalsXML.XMLReader;
+import com.example.patterns.data.main.observer.XMLNodeObserver;
+import com.example.patterns.data.main.observer.XMLNodeParserObserver;
 
 import java.util.List;
 import java.util.concurrent.atomic.AtomicReference;
 
 public class GetTrainsImpl implements GetTrains {
     private static GetTrainsImpl INSTANCE;
+    XMLNodeObserver observer;
     public static GetTrainsImpl getInstance() {
         if (INSTANCE == null) {
             synchronized (GetTrainsImpl.class) {
@@ -19,10 +22,13 @@ public class GetTrainsImpl implements GetTrains {
         }
         return INSTANCE;
     }
-    private GetTrainsImpl(){}
+    private GetTrainsImpl(){
+        observer = new XMLNodeParserObserver();
+    }
     @Override
     public List<Train> getTrains() {
         XMLReader reader = XMLReader.getInstance();
+        reader.addObserver(observer);
         return reader.readXML();
     }
 

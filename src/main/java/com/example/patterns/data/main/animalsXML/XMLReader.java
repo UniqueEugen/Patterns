@@ -1,5 +1,7 @@
-package com.example.patterns1.data.main.animalsXML;
-import com.example.patterns1.data.main.animalsXML.trainFactory.TrainFactory;
+package com.example.patterns.data.main.animalsXML;
+import com.example.patterns.data.main.animalsXML.trainFactory.TrainFactory;
+import com.example.patterns.data.main.observer.XMLDocumentSubject;
+import com.example.patterns.data.main.observer.XMLNodeObserver;
 import lombok.Data;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -13,8 +15,9 @@ import java.util.List;
 import java.util.Objects;
 
 @Data
-public class XMLReader {
+public class XMLReader implements XMLDocumentSubject {
     private static XMLReader INSTANCE;
+    private List<XMLNodeObserver> observers = new ArrayList<>();
     public static XMLReader getInstance() {
         if (INSTANCE == null) {
             synchronized (XMLReader.class) {
@@ -26,6 +29,24 @@ public class XMLReader {
         return INSTANCE;
     }
     private XMLReader(){}
+
+    @Override
+    public void addObserver(XMLNodeObserver observer) {
+        observers.add(observer);
+    }
+
+    @Override
+    public void removeObserver(XMLNodeObserver observer) {
+        observers.remove(observer);
+    }
+
+    @Override
+    public void notifyObservers(Node node) {
+        for (XMLNodeObserver observer : observers) {
+            observer.onNodeVisited(node);
+        }
+    }
+
     public List<Train> readXML() {
         List<Train> trains = null;
         File file = new File("E:/ВДИШП/Паттерны/Trains.xml");
@@ -43,7 +64,7 @@ public class XMLReader {
         return trains;
     }
 
-    private static List<Train> getTrainData(Document document) {
+    private List<Train> getTrainData(Document document) {
 
         NodeList list = document.getElementsByTagName("train");
         int length = list.getLength();
@@ -52,7 +73,7 @@ public class XMLReader {
             Node node = list.item(i);
             if (node.getNodeType() == Node.ELEMENT_NODE) {
                 Element element = (Element) node;
-                Train animal = getAnimal(element);
+                Train animal = getTrain(element);
                 trains.add(animal);
             }
         }
@@ -60,11 +81,12 @@ public class XMLReader {
         return trains;
     }
 
-    private static Train getAnimal(Element root) {
-
+    private Train getTrain(Element root) {
+        notifyObservers(root);
         Train train = TrainFactory.createTrain(Objects.requireNonNull(getTextContent(root, "train_number")));
         train.setTrainNumber(getTextContent(root, "train_number"));
         train.setDepartureDate(getTextContent(root, "departure_date"));
+        System.out.println(train.getDepartureDate());
         train.setDepartureTime(getTextContent(root, "departure_time"));
         train.setDestination(getTextContent(root, "destination"));
         train.setDepartureStation(getTextContent(root, "departure_station"));
@@ -95,6 +117,8 @@ public class XMLReader {
         }
         return null;
     }
+
+
     /*@Override
     public String toString(){
         trains.forEach(animal->{animal.toString(); animal.announcement();});

@@ -1,5 +1,5 @@
-package com.example.patterns1.data.main.animalsXML;
-import com.example.patterns1.data.main.animalsXML.trainEntities.Strategy.TrainTypeStrategy;
+package com.example.patterns.data.main.animalsXML;
+import com.example.patterns.data.main.animalsXML.trainEntities.Strategy.TrainTypeStrategy;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;

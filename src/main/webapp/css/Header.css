@@ -1,0 +1,37 @@
+.header {
+    background-color: #003366;
+    padding: 20px;
+    text-align: center;
+}
+
+.header-title {
+    font-size: 36px;
+    color: #ffffff;
+    margin-bottom: 20px;
+}
+
+.header-nav-list {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    margin: 0;
+    padding: 0;
+}
+
+.header-nav-item {
+    margin: 0 10px;
+}
+
+.header-nav-link {
+    text-decoration: none;
+    color: #ffffff;
+    font-weight: bold;
+    padding: 5px 10px;
+    border-radius: 4px;
+    transition: background-color 0.3s ease;
+}
+
+.header-nav-link:hover {
+    background-color: #ffffff;
+    color: #003366;
+}

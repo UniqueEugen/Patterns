@@ -1,4 +1,4 @@
-package com.example.patterns1.data.main.animalsXML.trainFactory;
+package com.example.patterns.data.main.animalsXML.trainFactory;
 
 public enum Trains {
     INTERNATIONAL_TRAIN,

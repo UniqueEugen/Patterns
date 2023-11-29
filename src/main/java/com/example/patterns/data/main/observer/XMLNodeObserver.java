@@ -1,5 +1,7 @@
 package com.example.patterns.data.main.observer;
 
-public interface XMLObserver {
-    void onElementParsed(String elementName, String elementValue);
+import org.w3c.dom.Node;
+
+public interface XMLNodeObserver {
+    void onNodeVisited(Node node);
 }

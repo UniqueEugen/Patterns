@@ -1,7 +1,7 @@
-package com.example.patterns1.data.main;
+package com.example.patterns.data.main;
 
 
-import com.example.patterns1.data.main.animalsXML.Train;
+import com.example.patterns.data.main.animalsXML.Train;
 
 import java.util.List;
 

@@ -1,6 +1,6 @@
-import com.example.patterns1.data.main.GetTrains;
-import com.example.patterns1.data.main.GetTrainsImpl;
-import com.example.patterns1.data.main.animalsXML.Train;
+import com.example.patterns.data.main.GetTrains;
+import com.example.patterns.data.main.GetTrainsImpl;
+import com.example.patterns.data.main.animalsXML.Train;
 import org.junit.jupiter.api.*;
 
 import java.util.List;

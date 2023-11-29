@@ -1,4 +1,4 @@
-package com.example.patterns1.data.main.animalsXML.trainEntities.Strategy;
+package com.example.patterns.data.main.animalsXML.trainEntities.Strategy;
 
 
 

@@ -1,4 +1,4 @@
-package com.example.patterns1.trainServlets;
+package com.example.patterns.trainServlets;
 
 
 import jakarta.servlet.annotation.WebServlet;
